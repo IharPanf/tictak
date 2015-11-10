@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.7" client="site" method="upgrade">
+    <name>TicTak</name>
+    <author>Stoik</author>
+    <creationDate>09.2015</creationDate>
+    <copyright>Copyright (C) 2015</copyright>
+    <license>GNU/GPL</license>
+    <authorEmail>pif13@tut.by</authorEmail>
+    <authorUrl>pratsa.ru</authorUrl>
+    <version>1.00</version>
+    <description><![CDATA[
+		<div class="descrip">
+		    <h1>Игра "Крестики-нолики"</h1>
+		    <hr>
+		    <p>Модуль  для Jommla 3.0+ позволяющимй выводить на сайте игру "Крестики-нолики".</p>
+			<div class="author">
+			     Модуль представлен в <strong>demo режиме.</strong>. Может когда-нибудь и доработаю.<br> Если есть вопросы(предложения), то пишите <a href="mailto:pif13@tut.by">сюда</a>
+			</div>
+		</div>
+		<style type="text/css">
+			div.descrip { padding: 10px; font-family: Arial; font-size:13px !important; font-weight: normal !important; text-align: justify; color: #4d4d4d; line-height: 24px; }
+			divn.descrip h1 { clear:both; font-family: Georgia, sans-serif; font-size:38px; margin:30px 20px 23px; padding:0px 0px 24px 10px; color:#333; border-bottom: 1px solid #eee; font-weight: normal; }
+			div.descrip p { margin: 0 26px 10px }
+			.autor {font-decoration:italic;}
+		</style>
+	]]></description>
+    <files>
+        <filename module="mod_tictak">mod_tictak.php</filename>
+        <filename module="mod_tictak">index.html</filename>
+    	<folder>tmpl</folder>
+        <folder>js</folder>
+        <folder>css</folder>
+    </files>
+<config>
+    <fields name="params">
+        <fieldset name="basic">
+            <field  name="widthField" type="text" default="5" label="Ширина поля"/>
+            <field  name="heightField" type="text" default="5" label="Длина поля"/>
+            <field  name="countVic" type="text" default="5" label="До сколька играем?"/>
+            <field name="layout" type="list" default="default" label="Layout"  description="Шаблон отображения">
+                <option value="default">Default</option>
+            </field>
+    </fieldset>
+
+    </fields>
+</config>
+</extension>
