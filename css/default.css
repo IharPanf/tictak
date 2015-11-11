@@ -14,3 +14,9 @@
 .currValue {
     display:none;
 }
+.option input[type='button']{
+    margin:2px 0 2px 0;
+    padding: 4px;
+    border:1px solid grey;
+    cursor:pointer;
+}

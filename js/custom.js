@@ -9,47 +9,54 @@ jQuery(document).ready(function(){
         } else {
             alert('Квадрат уже заполнен!');
         }
-        getSumRow();
-      //  showVictory(elem);
+        if (checkVictoryRow() || checkVictoryCol()) {
+            showVictory();
+        }
     });
+    jQuery('#startGame').on('click',startNewGame);
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function getSumRow() {
-    var retSum = 0;
-    var temp = true;
-   jQuery('.tic_tak table').find('tr').each(function(indx, element){
-        retSum = 0;
+function checkVictoryRow() {
+    var strAnswer = '';
+    var victory = false;
+    jQuery('.tic_tak table').find('tr').each(function(indx, element){
+        strAnswer = '';
         jQuery(element).find('td').each(function(i,e) {
             for (var i = 0; i < jQuery(e).length; i++) {
                 if (jQuery(e).find('.user').length) {
-                    if(temp) {
-                        retSum++;
-                    } else {
-                        temp = true;
-                    }
+                    strAnswer += '1';
                 } else {
-                    temp = false;
+                    strAnswer += '0';
                 }
             }
-            console.log(retSum);
         });
+        if (strAnswer.indexOf('11111') >= 0) { victory = true; }
     });
- /*   for (var i = 0+widthTable*row; i < widthTable*row+widthTable ; i++) {
-        retSum += massValue[i];
-    }
-*/    return retSum;
+    return victory;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function getSumCol(massValue, col) {
-    var retSum = 0, i = 0;
-    for (var i = 0; i < massValue.length; i++) {
-        if (i % widthTable == col) {
-            retSum += massValue[i];
-        }
+function checkVictoryCol() {
+    var strAnswer = '';
+    var victory = false;
+    var widthSize = jQuery('.tic_tak').find('tr').length;
+
+    for (var i = 0; i < widthSize; i++) {
+        strAnswer = '';
+        jQuery('.col'+i).each(function(indx,element){
+            for (var i = 0; i < jQuery(element).length; i++) {
+                if (jQuery(element).find('.user').length) {
+                    strAnswer += '1';
+                } else {
+                    strAnswer += '0';
+                }
+            }
+
+        });
+        if (strAnswer.indexOf('11111') >= 0) { victory = true; }
     }
-    return retSum;
+    return victory;
 }
-/////////////////////////Todo простой алгоритм - очень легко победить.
+//Todo простой алгоритм - очень легко победить.
 function turnComp(countCells) {
     while (true) {
         rand = Math.floor((Math.random()*countCells.length));
@@ -60,10 +67,10 @@ function turnComp(countCells) {
     }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function showVictory(elem){
-    for (var i = 0; i < elem.length; i++) {
-        if (parseInt(jQuery(elem[i]).text()) >= countVic) {
-            alert('Вы победили!!!');
-        }
-    }
+function showVictory(){
+    alert('Вы победили!!!');
+}
+
+function startNewGame() {
+    jQuery('.tic_tak').find('img').remove();
 }

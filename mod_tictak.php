@@ -1,5 +1,5 @@
 ﻿<?php
-    // no direct access 
+    // no direct access
     defined('_JEXEC') or die;
 
     $widthField	    = htmlspecialchars($params->get('widthField'));

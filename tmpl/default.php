@@ -4,14 +4,17 @@
         var widthTable  = <?php echo $widthField;?>;
         var countVic    = <?php echo $countVic;?>;
     </script>
+    <div class="option">
+        <input type="button" value="New game" id="startGame">
+    </div>
     <table>
-        <?php for ($i = 0; $i < $heightField; $i++ ) {
-            echo "<tr data-row ='r".$i."'>";
-               for($j = 0; $j < $widthField ; $j++ ) {
-                   echo "<td class='cells' data-col='c".$j."'></td>";
-               }
-            echo "</tr>";
-        }?>
+            <?php for ($i = 0; $i < $heightField; $i++ ) {
+                echo "<tr>";
+                for($j = 0; $j < $widthField ; $j++ ) {
+                    echo "<td class='cells col".$j."'></td>";
+                }
+                echo "</tr>";
+            }?>
     </table>
 </div>
 
